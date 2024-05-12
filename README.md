@@ -1,2 +1,2 @@
-# Arboricultura
-Traduzioni in italiano di testi sull'arboricoltura urbana e non solo
+# My config files
+Some config files in ~/.config/
