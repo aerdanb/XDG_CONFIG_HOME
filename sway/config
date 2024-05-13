@@ -1,0 +1,27 @@
+# Configurazione di Sway
+# Read `man 5 sway` for a complete reference.
+
+# Spunti per gli script utilizzati
+# https://github.com/EndeavourOS-Community-Editions/sway/blob/main/README.md
+
+# Include del file di configurazione dell'ambiente per SystemD e DBus 
+include $HOME/.config/sway/config.d/50-systemd-user.conf
+# Impostazioni per le applicazioni, ad es.: su che workspace devono andare o quali finestre devono stare in floating mode
+include $HOME/.config/sway/config.d/applications
+# Esecuzione delle applicazioni all'avvio
+include $HOME/.config/sway/config.d/autostart
+#Include delle configurazioni di base di Sway
+include $HOME/.config/sway/config.d/default
+# Impostazione della thema GTK3.0 e della "grafica" di Sway 
+include $HOME/.config/sway/config.d/theme
+# Idle and lok screen
+include $HOME/.config/sway/config.d/idle_lock
+# Keybindings di default, personalizzati e per il controllo delle applicazioni/sistema
+include $HOME/.config/sway/config.d/keybindings
+# Layout e scratchpad
+include $HOME/.config/sway/config.d/layout_scratchpad
+# Output and Input
+include $HOME/.config/sway/config.d/output_input
+# Workspaces
+include $HOME/.config/sway/config.d/workspaces
+

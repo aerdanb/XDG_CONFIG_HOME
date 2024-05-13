@@ -1,0 +1,54 @@
+# Key bindings
+    # Start a terminal
+    bindsym $mod+Return exec $term
+    # Kill focused window
+    bindsym $mod+Shift+q kill
+    # Start your launcher
+    bindsym $mod+d exec $menu
+    # Drag floating windows by holding down $mod and left mouse button.
+    # Resize them with right mouse button + $mod.
+    # Despite the name, also works for non-floating windows.
+    # Change normal to inverse to use left mouse button for resizing and right
+    # mouse button for dragging.
+    floating_modifier $mod normal
+    # Reload the configuration file
+    bindsym $mod+Shift+c reload
+    # Exit, lock screen, reboot, suspend, ecc. sway (logs you out of your Wayland session)
+    # TODO passare a visualizzare con wofi
+    # Power menu 
+    bindsym $mod+Ctrl+e exec /home/andrea/.local/bin/sway_power_wofi.sh
+    bindsym $mod+Shift+e exec playerctl stop & swaylock -f -c 000000 && systemctl suspend;;
+    bindsym $mod+l exec /home/andrea/.local/bin/swaylock.sh
+    #Control music player with playerctl
+    bindsym $mod+Shift+p exec /home/andrea/.local/bin/sway_player_wofi.sh
+    # Pass 
+    bindsym $mod+p exec /usr/bin/wofi-pass --type username :tab password
+    # Audio
+    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% && pactl get-sink-volume @DEFAULT_SINK@ | awk 'NR==1{print substr($5,1,length($5)-1)}' > $WOBSOCK
+    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% && pactl get-sink-volume @DEFAULT_SINK@ | awk 'NR==1{print substr($5,1,length($5)-1)}' > $WOBSOCK
+    bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle && ( [ "$(pactl get-sink-mute @DEFAULT_SINK@)" = "Mute: yes" ] && echo 0 > $WOBSOCK ) || pactl get-sink-volume @DEFAULT_SINK@ | awk 'NR==1{print substr($5,1,length($5)-1)}' > $WOBSOCK
+    # Brightness
+    bindsym XF86MonBrightnessDown exec brightnessctl set 5%- | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
+    bindsym XF86MonBrightnessUp exec brightnessctl set +5% | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
+    #Move your focus around 
+    bindsym $mod+Left focus left
+    bindsym $mod+Down focus down
+    bindsym $mod+Up focus up
+    bindsym $mod+Right focus right
+    #Or use vimkeys
+    # bindsym $mod+$left focus left
+    # bindsym $mod+$down focus down
+    # bindsym $mod+$up focus up
+    # bindsym $mod+$right focus right
+    # Move the focused window with the same, but add Shift
+    bindsym $mod+Shift+Left move left
+    bindsym $mod+Shift+Down move down
+    bindsym $mod+Shift+Up move up
+    bindsym $mod+Shift+Right move right
+    #Or use vimkeys
+    # bindsym $mod+Shift+$left move left
+    # bindsym $mod+Shift+$down move down
+    # bindsym $mod+Shift+$up move up
+    # bindsym $mod+Shift+$right move right
+
+# vim: syntax=swayconfig 

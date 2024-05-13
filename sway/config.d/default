@@ -1,0 +1,82 @@
+# XWayland
+    # Per disabilitare XWayland decommentare la riga successiva
+    # xwayland disable
+    # Per mostrare le applicazioni che girano in XWayland
+    for_window [shell="xwayland"] title_format "[XWayland] %title
+
+# Variables
+    # Logo key. Use Mod1 for Alt.
+    set $mod Mod4
+    bindsym $mod+k exec notify-send "$HOME"
+    # Home row direction keys, like vim
+    # Voglio utilizzare solo le frecce
+    # set $left h
+    # set $down j
+    # set $up k
+    # set $right l
+    # Your preferred terminal emulator
+    set $term foot
+    # Your preferred application launcher
+    # Note: pass the final command to swaymsg so that the resulting window can be opened
+    # on the original workspace that the command was run on.
+    set $menu wofi -I --show=drun | xargs swaymsg exec --
+
+# Focus
+    focus_follows_mouse no
+
+# SwayNag config
+    #Show a warning or error message with buttons
+    set {
+        $nag exec swaynagmode
+        }
+    mode "nag" {
+      bindsym {
+        Ctrl+d    mode "default"
+        Ctrl+c    $nag --exit
+        q         $nag --exit
+        Escape    $nag --exit
+        Return    $nag --confirm
+        Tab       $nag --select prev
+        Shift+Tab $nag --select next
+        Left      $nag --select next
+        Right     $nag --select prev
+        Up        $nag --select next
+        Down      $nag --select prev
+      }
+    }
+
+# Wob
+    # Wob is a lightweight overlay volume/backlight/progress/anything bar for wlroots based Wayland compositors
+    # https://github.com/francma/wob
+    set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
+    exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
+
+# Clipboard
+    # wl-clipboard is a wayland clipboard utilities
+    # https://github.com/bugaevc/wl-clipboard?tab=readme-ov-file
+#    exec wl-paste -t text --watch clipman store --no-persist
+    # copyq è un gestore della clipboard
+    bindsym $mod+Shift+v exec copyq toggle
+
+# Resizing containers:
+    mode "resize" {
+        # left will shrink the containers width
+        # right will grow the containers width
+        # up will shrink the containers height
+        # down will grow the containers height
+        # Ditto, with arrow keys
+        bindsym Left resize shrink width 10px
+        bindsym Down resize grow height 10px
+        bindsym Up resize shrink height 10px
+        bindsym Right resize grow width 10px
+        # bindsym $left resize shrink width 10px
+        # bindsym $down resize grow height 10px
+        # bindsym $up resize shrink height 10px
+        # bindsym $right resize grow width 10px
+        # Return to default mode
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+    }
+    bindsym $mod+r mode "resize"
+
+# vim: syntax=swayconfig

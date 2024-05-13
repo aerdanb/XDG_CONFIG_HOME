@@ -1,0 +1,53 @@
+#Assegnazione delle app a specifici workspace
+# Find the app_id or class of a window by inspecting the result of: swaymsg -t get_tree.
+
+    assign [app_id="claws"] 2
+    for_window [app_id="claws"] 2
+    assign [app_id="Firefox-esr"] 3
+    for_window [app_id="Firefox-esr"] 3
+    assign [app_id="libreoffice"] 4 
+    for_window [app_id="libreoffice"] 4 
+    assign [class="Gimp"] 5
+    for_window [class="Gimp"] 5
+    assign [class="krita"] 5
+    for_window [class="krita"] 5
+    assign [app_id="org.inkscape.Inkscape"] 6
+    for_window [app_id="org.inkscape.Inkscape"] 6
+    assign [app_id="org.musicbrainz.Picard"] 9
+    for_window [app_id="org.musicbrainz.Picard"] 9
+    assign [app_id="com.github.wwmm.easyeffects"] 9
+    for_window [app_id="com.github.wwmm.easyeffects"] 9
+    assign [app_id="org.clementine_player.Clementine"] 10
+    for_window [app_id="org.clementine_player.Clementine"] 10
+    assign [app_id="ncmpcpp"] 10
+    for_window [app_id="ncmpcpp"] 10
+    #Finestre in modalità float
+    for_window [window_role="pop-up"] floating enable
+    for_window [window_role="bubble"] floating enable
+    for_window [window_role="task_dialog"] floating enable
+    for_window [window_role="Preferences"] floating enable
+    for_window [window_type="dialog"] floating enable
+    for_window [window_type="menu"] floating enable
+    for_window [window_role="About"] floating enable
+    for_window [title="File Operation Progress"] floating enable, border pixel 1, sticky enable, resize set width 40 ppt height 30 ppt
+    for_window [app_id="firefox" title="^Library$"] floating enable, border pixel 1, sticky enable, resize set width 40 ppt height 30 ppt
+    for_window [app_id="floating_shell_portrait"] floating enable, border pixel 1, sticky enable, resize set width 30 ppt height 40 ppt
+    for_window [title="Picture in picture"] floating enable, sticky enable
+    for_window [title="nmtui"] floating enable,  resize set width 50 ppt height 70 ppt
+    for_window [title="htop"] floating enable, resize set width 50 ppt height 70 ppt
+    for_window [app_id="xsensors"] floating enable
+    for_window [title="Save File"] floating enable
+    for_window [app_id="firefox" title="Firefox — Sharing Indicator"] kill
+    for_window [title="Errore"] floating enable
+    for_window [title="Password Required"] floating enable
+    for_window [title="Open"] floating enable
+    for_window [app_id="soffice"] floating enable
+    for_window [title="LibreOffice - Security Warning"] floating enable
+    for_window [title="Save as"] floating enable
+    for_window [title="Rubrica"] floating enable
+    for_window [title="About"] floating enable
+    for_window [title="Protect Sheet"] floating enable
+    for_window [title="claws-mail"] floating enable
+    for_window [title="ricezione nuovi messaggi"] floating enable
+
+# vim: syntax=swayconfig ts=4

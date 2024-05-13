@@ -1,0 +1,17 @@
+# Autostart
+
+    #Apre un terminale nel primo workspace
+    exec swaymsg "workspace 1; exec $term"
+
+    #Avvia Sway Notification Center, l'applicazione per le notifiche sul desktop
+    # exec mako
+    exec swaync
+    
+    # Avvia il gestore della clipboard
+    exec copyq
+    
+    # Avvia l'applet di Network Manager
+    exec nm-applet --indicator
+
+    # Avvia tutte le applicazioni in $HOME/.config/autostart (applicazioni che hanno l'opzione di avviarsi al login)
+    exec dex -a -s $HOME/.config/autostart
